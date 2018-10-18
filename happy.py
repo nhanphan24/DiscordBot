@@ -1,5 +1,11 @@
-#discord bot "happy"
-#Nhan Phan
+'''
+discord chat bot
+by: Nhan Phan
+
+This discord bot stays in the server and answer to the users' requests. It
+can kick members, report back information, and help users choose between
+some given choices
+'''
 
 import discord
 from discord.ext import commands
@@ -56,4 +62,4 @@ async def info(user: discord.Member):
     
     
 if __name__ == '__main__':
-    bot.run('NDY5NzU1MDU1OTYxMDE0Mjcz.DjMWBA.UEVvMPiFWJmOS52UdjBERPhMWNE')
+    bot.run('Token')

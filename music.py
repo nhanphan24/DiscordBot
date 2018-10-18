@@ -2,6 +2,11 @@
 Created on Jul 27, 2018
 
 @author: nhanp
+
+This bot is designed to play music in Discord voice channel. It is useful
+since everyone in the channel can listen to the same song while they play
+game or having conservations in the call. The bot takes song requests from
+the users
 '''
 from discord.ext import commands
 from collections import defaultdict
@@ -152,4 +157,4 @@ class MusicPlayer:
     
 if __name__ == '__main__':
     bot.add_cog(MusicPlayer())
-    bot.run('BotToken')
+    bot.run('Token')
