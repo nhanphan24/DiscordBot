@@ -16,5 +16,7 @@ list as the users want.
 I think the two programs are pretty nice to have in Discord, and more information about the bots can by found
 in their file.
 
+
 Best,
+
 Nhan Phan
