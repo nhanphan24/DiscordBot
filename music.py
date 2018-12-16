@@ -63,7 +63,8 @@ class MusicPlayer:
             await context.invoke(self.come)
         voice_client = bot.voice_client_in(server)
         search = {'default_search': 'auto', 'quiet': True}
-        music = await voice_client.create_ytdl_player(song, ytdl_options = search, after = lambda : self._play_queued_songs(server.id))
+        music = await voice_client.create_ytdl_player(song, ytdl_options = search, 
+                                                      after = lambda : self._play_queued_songs(server.id))
         
         if server.id in self.current_song:
             self.queued_songs[server.id].append(music)
@@ -126,9 +127,11 @@ class MusicPlayer:
         '''Stop playing any audio and delete the queue list but unlike 'leave'
         command, the bot stays in the voice channel'''
         server_id = context.message.server.id
-        self.current_song[server_id].stop()
-        del self.current_song[server_id]
-        del self.queued_songs[server_id]
+        if server_id in self.current_song:
+            self.current_song[server_id].stop()
+            del self.current_song[server_id]
+        if server_id in self.queued_songs:
+            del self.queued_songs[server_id]
     
     @commands.command(pass_context = True)
     async def delete(self, context, *, song: str):
@@ -153,8 +156,8 @@ class MusicPlayer:
         await bot.say('queue list:')
         for song_num in range(len(self.queued_songs[server_id])):
             await bot.say(str(song_num + 1) + '. ' + self.queued_songs[server_id][song_num].title)
-                
+                 
     
 if __name__ == '__main__':
     bot.add_cog(MusicPlayer())
-    bot.run('Token')
+    bot.run('Bot taken goes here')
