@@ -36,7 +36,10 @@ class MusicPlayer:
         user is in
         '''
         channel = context.message.author.voice.voice_channel
-        await bot.join_voice_channel(channel)
+        try:
+            await bot.join_voice_channel(channel)
+        except:
+            await bot.say('User needs to be in a voice channel')
     
     @commands.command(pass_context = True)
     async def leave(self, context):
@@ -160,4 +163,4 @@ class MusicPlayer:
     
 if __name__ == '__main__':
     bot.add_cog(MusicPlayer())
-    bot.run('Bot taken goes here')
+    bot.run('Token goes here')
